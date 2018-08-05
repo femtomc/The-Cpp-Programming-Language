@@ -16,6 +16,7 @@ public:
     Polynomial(Polynomial&); //the copy constructor
     Polynomial(double); //the constructor to initialize a polynomial equal to the given constant
     ~Polynomial() { delete coefficients; } //the deconstructor to clear up the allocated memory
+    int print_polynomial();
 
     //the operations to define for the Polynomial class
 
@@ -66,8 +67,30 @@ Polynomial::Polynomial() {
 
 //Initialize a polynomial with the given coefficient array and degree
 Polynomial::Polynomial(double coeffs[], int nterms){
-    degree = nterms;
-    coefficients = new double[degree]; //array to hold coefficient values
-    for(int i = 0; i < degree; i++)
+    degree = nterms-1;
+    coefficients = new double[nterms]; //array to hold coefficient values
+    for(int i = 0; i < nterms; i++)
         coefficients[i] = coeffs[i];
+}
+
+int Polynomial::print_polynomial(){
+    cout << "The degree is " << this->degree << '\n';
+    for (int k = 0; k < this->degree+1; k++){
+        cout << this->coefficients[k] << "(x_" << k << ")";
+        if (k != this->degree){
+            cout << "+";
+        }
+    }
+    cout << "\n";
+    return(0);
+}
+
+int main(){
+    double coeffQ[3] = {1,2,3};
+    double coeffP[3] = {1,4,9};
+    Polynomial *Q = new Polynomial(coeffQ,3);
+    Polynomial *P = new Polynomial(coeffP,3);
+    P -> print_polynomial();
+    Q -> print_polynomial();
+    return(0);
 }
