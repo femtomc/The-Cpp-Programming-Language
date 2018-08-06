@@ -18,7 +18,7 @@ public:
     ~Polynomial() { delete coefficients; } //the deconstructor to clear up the allocated memory
     int print_polynomial();
 
-    //the operations to define for the Polynomial class
+    //Operations on polynomials
 
     // Addition of two polynomials
     Polynomial operator+(Polynomial p){
@@ -88,9 +88,9 @@ int Polynomial::print_polynomial(){
 int main(){
     double coeffQ[3] = {1,2,3};
     double coeffP[3] = {1,4,9};
-    Polynomial *Q = new Polynomial(coeffQ,3);
-    Polynomial *P = new Polynomial(coeffP,3);
-    P -> print_polynomial();
-    Q -> print_polynomial();
+    Polynomial Q(coeffQ,3);
+    Polynomial P(coeffP,3);
+    P.print_polynomial();
+    Q.print_polynomial();
     return(0);
 }
